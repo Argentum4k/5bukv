@@ -5,6 +5,8 @@
 // )
 let allWords=[]
 
+
+
 async function getWords(){
   // хз что и почему тут происходит но вроде работает
   const nouns = await fetch('russian_nouns_5.txt');
@@ -138,3 +140,8 @@ function letterPressed(letterButton) {
 }
 
 letterButtons.forEach(el => el.addEventListener('click', l => letterPressed(l)))
+
+function closeInstructions(){
+  document.querySelector('.instructions').style.display = 'none'
+  console.log('close')
+}

@@ -1,0 +1,25 @@
+﻿.instructions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5%;
+  /*border: */
+  border-radius: 50px;
+  background: #bcbcbc;
+  max-width: 75vw;
+}
+
+.instructions button{
+  padding: 10px;
+  border-radius: 10px;
+  background: var(--rightcolor) ;
+  border: none;
+  cursor: pointer;
+}
+
+.instructions ol{
+  padding-left: 20px;
+}
+.instructions ul{
+  padding-left: 20px;
+}
