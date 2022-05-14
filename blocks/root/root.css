@@ -1,0 +1,12 @@
+﻿:root {
+  --bgcolor: black;
+  --wrongcolor: #373737;
+  --misposcolor: white;
+  --rightcolor: yellow;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

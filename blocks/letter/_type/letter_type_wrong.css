@@ -1,0 +1,5 @@
+﻿.letter_type_wrong {
+  color: var(--misposcolor);
+  background-color: var(--wrongcolor);
+  border: none;
+}

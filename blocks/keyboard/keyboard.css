@@ -1,0 +1,6 @@
+﻿.keyboard {
+display: flex;
+  flex-direction: column;
+  gap: .5em;
+  align-items: center;
+}

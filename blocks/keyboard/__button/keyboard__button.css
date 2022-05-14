@@ -1,0 +1,18 @@
+﻿.keyboard__button {
+  height: 2.5em;
+  width: 2.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--misposcolor);
+  background-color: var(--bgcolor);
+  border: solid 2px var(--wrongcolor);
+  border-radius: 100%;
+  transition: opacity;
+}
+
+.keyboard__button:hover {
+  cursor: pointer;
+  opacity: .85;
+}

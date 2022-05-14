@@ -1,0 +1,13 @@
+﻿.header__letter {
+  margin-right: .1em;
+  width: 1.5em;
+  height: 1.5em;
+  display: inline-block;
+  color: black;
+  background-color: var(--rightcolor);
+  font-weight: 700;
+  border-radius: .4em;
+  font-size: 1em;
+  text-align: center;
+  padding-top: .2em;
+}

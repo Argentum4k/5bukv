@@ -1,0 +1,5 @@
+﻿.letter_type_misposition {
+  background-color: var( --misposcolor);
+  color: var(--bgcolor);
+  border: none;
+}

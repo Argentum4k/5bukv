@@ -1,0 +1,5 @@
+﻿.letter_type_right {
+  color: var(--bgcolor);
+  background-color: var(--rightcolor);
+  border: none;
+}

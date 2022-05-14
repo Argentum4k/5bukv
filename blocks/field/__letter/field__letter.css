@@ -1,0 +1,13 @@
+﻿.field__letter {
+  width: 4em;
+  height: 4em;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--misposcolor);
+  background-color: var(--bgcolor);
+  border: solid 2px var(--wrongcolor);
+  border-radius: 20%;
+}
