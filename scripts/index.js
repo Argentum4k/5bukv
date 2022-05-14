@@ -19,7 +19,6 @@ async function getWords(){
   //   .catch(err => console.log(err))
   // allWords = text.split('\r\n')  // для локальной
   allWords = text.split('\n') // для гх пагес
-
 }
 
 let secret
