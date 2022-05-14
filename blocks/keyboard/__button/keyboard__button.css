@@ -5,6 +5,7 @@
   align-items: center;
   justify-content: center;
 
+  text-transform: uppercase;
   color: var(--misposcolor);
   background-color: var(--bgcolor);
   border: solid 2px var(--wrongcolor);
