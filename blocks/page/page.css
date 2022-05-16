@@ -11,6 +11,6 @@
 
 @media screen and (max-width: 600px) {
   .page{
-    font-size: x-small;
+    font-size: x-small; // наугад
   }
 }

@@ -19,8 +19,10 @@ async function getWords(){
   //     allWords = response.split('\r\n')
   //   })
   //   .catch(err => console.log(err))
-  // allWords = text.split('\r\n')  // для локальной
-  allWords = text.split('\n') // для гх пагес
+  if (document.location.host.toLowerCase().includes('github'))
+    allWords = text.split('\n') // для гх пагес
+  else
+    allWords = text.split('\r\n')  // для локальной
 }
 
 let secret
