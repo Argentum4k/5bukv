@@ -1,0 +1,6 @@
+﻿.pair {
+  display: grid;
+  grid-template-rows: max-content 30vw;
+  grid-template-columns: 50% 50%;
+  /*width: 100%;*/
+}
