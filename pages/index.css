@@ -4,6 +4,7 @@
 @import url(../blocks/page/page.css);
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__letter/header__letter.css);
+@import url(../blocks/debug/debug.css);
 @import url(../blocks/content/content.css);
 @import url(../blocks/instructions/instructions.css);
 @import url(../blocks/field/field.css);
@@ -13,7 +14,8 @@
 @import url(../blocks/keyboard/__line/keyboard__line.css);
 @import url(../blocks/keyboard/__button/keyboard__button.css);
 @import url(../blocks/keyboard/__button/_big/keyboard__button_big.css);
+@import url(../blocks/footer/footer.css);
 @import url(../blocks/letter/_type/letter_type_wrong.css);
 @import url(../blocks/letter/_type/letter_type_misposition.css);
 @import url(../blocks/letter/_type/letter_type_right.css);
-@import url(../blocks/footer/footer.css);
+@import url(../blocks/letter/_type/letter_type_current-row.css);

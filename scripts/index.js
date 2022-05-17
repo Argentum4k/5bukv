@@ -1,11 +1,4 @@
-// const kbButtons = document.querySelectorAll('.keyboard__button')
-// kbButtons.forEach((el) => {
-//   el.style.gridArea = el.innerHTML
-//   }
-// )
 let allWords=[]
-
-
 
 async function getWords(){
   // хз что и почему тут происходит но вроде работает
@@ -39,15 +32,19 @@ let curWord = ''
 let complete = false
 const letterButtons = document.querySelectorAll('.keyboard__button')
 const lines = document.querySelectorAll('.field__line')
-
-
+highlightCurLine(1)
+//debug
+debug = document.querySelector('.debug')
+const url = new URL(document.location.href)
+if (url.searchParams.get('debug') != null)
+  debug.style.display = 'block'
 
 // начинает все заново
 function reset(){
-
-  // alert('заново?') // not helping
   secret = allWords[Math.floor(Math.random() * allWords.length)].replace('ё','е')
+  highlightCurLine(0)
   curLine = 0
+  highlightCurLine(1)
   curPos = 0
   curWord = ''
   complete = false
@@ -66,7 +63,7 @@ function reset(){
   secret = allWords[Math.floor(Math.random() * allWords.length)].replace('ё','е')
   console.log('загадано слово "' + secret.toUpperCase() + '"')
 }
-
+// красит буквы
 function colorField(){
   const line = lines[curLine].querySelectorAll('.field__letter')
   line.forEach((letterField,index) => {
@@ -90,20 +87,31 @@ function colorField(){
   })
 }
 
+// подсветка текущей строки
+function highlightCurLine(isCur){
+  if (isCur)
+    lines[curLine].querySelectorAll('.field__letter').forEach(el => el.classList.add('letter_type_current-row'))
+  else
+    lines[curLine].querySelectorAll('.field__letter').forEach(el => el.classList.remove('letter_type_current-row'))
+}
 
+// проверяет слово
 function checkWord(word){
   if (word == secret){
     complete = true;
     colorField()
-    // setTimeout(()=>console.log('красим-красим'), 500) // not hepling
-    // почемуто бля сначала делаетс алерт, неебу почему
-    alert('Угадал')
-    reset()
+    setTimeout(()=>{
+      console.log('красим-красим')
+      alert('Угадал')
+      reset()
+    }, 100) // ok
+    // почемуто сначала делается алерт, а красить не красит. Видимо потому что алерт асинхронный?...
   } else {
     if (!allWords.includes(word)){
       alert('Нет такого слова')
     } else {
       colorField()
+      highlightCurLine(0)
       curLine += 1
       curPos = 0
       curWord = ''
@@ -111,10 +119,13 @@ function checkWord(word){
         alert('Вы проиграли, было загадано слово "' + secret + '"')
         reset()
       }
+      else
+        highlightCurLine(1)
     }
   }
 }
 
+// обработчик нажатой буквы
 function letterPressed(letterButton) {
   // if (curPos > 4) return
   if (complete) return
@@ -129,7 +140,7 @@ function letterPressed(letterButton) {
     return
   }
   if (letter == '✔') {
-    if (curPos < 5) return
+    if (curPos < 5) return;
     checkWord(curWord.toLowerCase())
     return
   }
@@ -147,3 +158,9 @@ function closeInstructions(){
   document.querySelector('.instructions').style.display = 'none'
   console.log('close')
 }
+
+
+
+// лайфхачные слова:
+// пилот ревун камыш (маска?)
+// спорт лиман девка

@@ -17,3 +17,7 @@
   cursor: pointer;
   opacity: .85;
 }
+
+.keyboard__button:active {
+  border: 2px var(--rightcolor) solid;
+}

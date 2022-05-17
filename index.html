@@ -25,6 +25,9 @@
       class="header__letter">К</span><span class="header__letter">В</span>
     </h1>
   </header>
+  <div class="debug">
+    debug
+  </div>
   <main class="content">
     <section class="instructions">
       <h2>Игра 5 букв, или Быки и коровы.</h2>
@@ -134,12 +137,20 @@
         <button class="keyboard__button keyboard__button_big" type="button">✔</button>
       </div>
 
-      <div class="letter_type_wrong letter_type_misposition letter_type_right" type="button"></div>
     </section>
   </main>
   <footer class="footer">
   </footer>
   <template id="template">
+    <div class="field__line">
+      <div class="field__letter"></div>
+      <div class="field__letter"></div>
+      <div class="field__letter"></div>
+      <div class="field__letter"></div>
+      <div class="field__letter"></div>
+    </div>
+
+    <div class="letter_type_wrong letter_type_misposition letter_type_right letter_type_current-row" type="button"></div>
   </template>
 
   <script src="./scripts/index.js"></script>
