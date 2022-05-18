@@ -157,23 +157,34 @@ function closeInstructions(){
   console.log('close')
 }
 // привязка клавиш к клавиатуре
+// todo запретить пока не закрыта инструкция
 const alphabet = 'йцукенгшщзхъфывапролджэячсмитьбю'
-let key, keycode,  code
+// let key, keycode,  code
+document.addEventListener('keydown', event => {
+  if (alphabet.includes(event.key)){
+    keyboardButtons.forEach(el => {
+      if (el.innerHTML == event.key)
+        el.classList.add('keyboard__button_big')
+    })
+  }
+});
 document.addEventListener('keyup', event => {
   // console.log('Key: ', event.key);  // use this, only russian layout
-  key = event.key;
+  // key = event.key;
   // console.log('keyCode: ', event.keyCode);
   // keycode = event.keyCode;
   // console.log('KeyboardEvent.code: ', event.code);  // onelove
   // code = event.code
-  if (alphabet.includes(key)){
+  if (alphabet.includes(event.key)){
     keyboardButtons.forEach(el => {
-      if (el.innerHTML == key)
+      if (el.innerHTML == event.key) {
         el.click()
+        el.classList.remove('keyboard__button_big')
+      }
     })
-  } else if ('Backspace' == key){
+  } else if ('Backspace' == event.key){
     backButton.click()
-  } else if ('Enter' == key){
+  } else if ('Enter' == event.key){
     okButton.click()
   }
 });
