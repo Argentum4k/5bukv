@@ -52,6 +52,8 @@ anim_set.forEach(el => {
   imgNormal.alt = titleNormal.innerHTML
   imgSea.src = imgBase + el.img_sea
   imgSea.alt = titleSea.innerHTML
+  if (el.name == 'Волк')
+    titleSea.innerHTML = ' . . . '
   animals.append(newPair)
 
 })

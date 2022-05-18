@@ -30,14 +30,12 @@ let curLine = 0
 let curPos = 0
 let curWord = ''
 let complete = false
-const letterButtons = document.querySelectorAll('.keyboard__button')
+const keyboardButtons = document.querySelectorAll('.keyboard__button')
+const bigButtons = document.querySelectorAll('.keyboard__button_big')
+const backButton = bigButtons[0]
+const okButton = bigButtons[1]
 const lines = document.querySelectorAll('.field__line')
 highlightCurLine(1)
-//debug
-debug = document.querySelector('.debug')
-const url = new URL(document.location.href)
-if (url.searchParams.get('debug') != null)
-  debug.style.display = 'block'
 
 // начинает все заново
 function reset(){
@@ -55,7 +53,7 @@ function reset(){
     fld.classList.remove('letter_type_right')
     fld.innerHTML=''
   })
-  letterButtons.forEach( btn => {
+  keyboardButtons.forEach( btn => {
     btn.classList.remove('letter_type_wrong')
     btn.classList.remove('letter_type_misposition')
     btn.classList.remove('letter_type_right')
@@ -68,7 +66,7 @@ function colorField(){
   const line = lines[curLine].querySelectorAll('.field__letter')
   line.forEach((letterField,index) => {
     let curLetter = letterField.innerHTML
-    const curButton = [...letterButtons].filter(b => b.innerHTML == curLetter)[0]
+    const curButton = [...keyboardButtons].filter(b => b.innerHTML == curLetter)[0]
     if (!secret.includes(curLetter)) {
       letterField.classList.add('letter_type_wrong')
       curButton.classList.add('letter_type_wrong') // оно так и так не меняется
@@ -152,13 +150,33 @@ function letterPressed(letterButton) {
   }
 }
 
-letterButtons.forEach(el => el.addEventListener('click', l => letterPressed(l)))
+keyboardButtons.forEach(el => el.addEventListener('click', l => letterPressed(l)))
 
 function closeInstructions(){
   document.querySelector('.instructions').style.display = 'none'
   console.log('close')
 }
-
+// привязка клавиш к клавиатуре
+const alphabet = 'йцукенгшщзхъфывапролджэячсмитьбю'
+let key, keycode,  code
+document.addEventListener('keyup', event => {
+  // console.log('Key: ', event.key);  // use this, only russian layout
+  key = event.key;
+  // console.log('keyCode: ', event.keyCode);
+  // keycode = event.keyCode;
+  // console.log('KeyboardEvent.code: ', event.code);  // onelove
+  // code = event.code
+  if (alphabet.includes(key)){
+    keyboardButtons.forEach(el => {
+      if (el.innerHTML == key)
+        el.click()
+    })
+  } else if ('Backspace' == key){
+    backButton.click()
+  } else if ('Enter' == key){
+    okButton.click()
+  }
+});
 
 
 // лайфхачные слова:

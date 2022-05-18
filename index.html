@@ -25,9 +25,15 @@
       class="header__letter">К</span><span class="header__letter">В</span>
     </h1>
   </header>
-  <div class="debug">
-    debug
+  <div class="debug debug_hidden">
+    <p id="fontsize_style"></p>
+    <p id="fontsize_computed"></p>
+    <p id="inner_width"></p>
+    <p id="inner_height"></p>
+    <p id="client_width"></p>
+    <p id="client_height"></p>
   </div>
+  <button id="debug_toggle" class="debug_hidden" onclick="toggleDebug()">дебаг вкл/выкл</button>
   <main class="content">
     <section class="instructions">
       <h2>Игра 5 букв, или Быки и коровы.</h2>
@@ -154,6 +160,7 @@
   </template>
 
   <script src="./scripts/index.js"></script>
+  <script src="./scripts/debug.js"></script>
 
 </body>
 
