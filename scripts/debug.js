@@ -17,6 +17,8 @@ function upd_debug(){
   debug.querySelector('#inner_height').innerHTML = 'inner_height: ' + window.innerHeight;
   debug.querySelector('#client_width').innerHTML = 'client_width: ' + document.documentElement.clientWidth; //identical to next
   debug.querySelector('#client_height').innerHTML = 'client_height: ' + document.querySelector('html').clientHeight;//identical to prev
+  debug.querySelector('#page_width').innerHTML = 'page_width: ' + document.documentElement.scrollWidth
+  debug.querySelector('#page_height').innerHTML = 'page_height: ' + document.documentElement.scrollHeight
 }
 
 window.addEventListener('resize', upd_debug, true);

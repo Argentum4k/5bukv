@@ -31,7 +31,7 @@ let curPos = 0
 let curWord = ''
 let complete = false
 const keyboardButtons = document.querySelectorAll('.keyboard__button')
-const bigButtons = document.querySelectorAll('.keyboard__button_big')
+const bigButtons = [...document.querySelectorAll('.keyboard__button_big')]
 const backButton = bigButtons[0]
 const okButton = bigButtons[1]
 const lines = document.querySelectorAll('.field__line')
@@ -45,6 +45,7 @@ function reset(){
   highlightCurLine(1)
   curPos = 0
   curWord = ''
+  colorKeyboard()
   complete = false
   // сброс окраски
   document.querySelectorAll('.field__letter').forEach(fld => {
@@ -61,7 +62,7 @@ function reset(){
   secret = allWords[Math.floor(Math.random() * allWords.length)].replace('ё','е')
   console.log('загадано слово "' + secret.toUpperCase() + '"')
 }
-// красит буквы
+// красит поле
 function colorField(){
   const line = lines[curLine].querySelectorAll('.field__letter')
   line.forEach((letterField,index) => {
@@ -81,6 +82,17 @@ function colorField(){
         // здесь тоже все однозначно
         curButton.classList.add('letter_type_right')
       }
+    }
+  })
+}
+
+// красим клавиатуру за текущее слово
+function colorKeyboard(){
+  keyboardButtons.forEach(el=> {
+    if (curWord.includes(el.innerHTML)) {
+      el.classList.add('letter_type_current-row')
+    } else if (!bigButtons.includes(el)) {
+      el.classList.remove('letter_type_current-row')
     }
   })
 }
@@ -123,6 +135,7 @@ function checkWord(word){
   }
 }
 
+
 // обработчик нажатой буквы
 function letterPressed(letterButton) {
   // if (curPos > 4) return
@@ -135,11 +148,13 @@ function letterPressed(letterButton) {
     curField.innerHTML = ''
     if  (curWord != '')
       curWord = curWord.slice(0,-1)
+    colorKeyboard()
     return
   }
   if (letter == '✔') {
     if (curPos < 5) return;
     checkWord(curWord.toLowerCase())
+    colorKeyboard()
     return
   }
   if (curPos < 5) {
@@ -147,6 +162,7 @@ function letterPressed(letterButton) {
     curField.innerHTML = letter
     curWord += letter
     curPos++
+    colorKeyboard()
   }
 }
 
@@ -163,8 +179,8 @@ const alphabet = 'йцукенгшщзхъфывапролджэячсмитьб
 document.addEventListener('keydown', event => {
   if (alphabet.includes(event.key)){
     keyboardButtons.forEach(el => {
-      if (el.innerHTML == event.key)
-        el.classList.add('keyboard__button_big')
+      if (el.innerHTML == event.key && curPos < 5)
+        el.classList.add('letter_type_current-row')
     })
   }
 });
@@ -175,11 +191,11 @@ document.addEventListener('keyup', event => {
   // keycode = event.keyCode;
   // console.log('KeyboardEvent.code: ', event.code);  // onelove
   // code = event.code
-  if (alphabet.includes(event.key)){
+  if (alphabet.includes(event.key) ){
     keyboardButtons.forEach(el => {
       if (el.innerHTML == event.key) {
         el.click()
-        el.classList.remove('keyboard__button_big')
+        // el.classList.remove('keyboard__button_big')
       }
     })
   } else if ('Backspace' == event.key){
