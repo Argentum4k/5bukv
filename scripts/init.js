@@ -56,4 +56,4 @@ document.addEventListener('keyup', event => {
   }
 });
 
-
+[1].some()
