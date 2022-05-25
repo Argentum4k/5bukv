@@ -5,6 +5,7 @@
   display: inline-block;
   color: black;
   background-color: var(--rightcolor);
+  text-transform: uppercase;
   font-weight: 700;
   border-radius: .4em;
   font-size: 1em;
