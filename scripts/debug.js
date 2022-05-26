@@ -1,11 +1,11 @@
 //debug
 debug = document.querySelector('.debug')
 const url = new URL(document.location.href)
-if (url.searchParams.get('debug') != null)
+if (url.searchParams.get('debug') != null) {
   debug.classList.remove('debug_hidden')
   document.querySelector('#debug_toggle').classList.remove('debug_hidden')
   upd_debug()
-
+}
 function toggleDebug(){
   debug.classList.toggle('debug_hidden')
 }
