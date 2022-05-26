@@ -1,0 +1,4 @@
+﻿.header__link_width_2col {
+
+  grid-template-columns: repeat(2, 1fr);
+}

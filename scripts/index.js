@@ -1,5 +1,6 @@
 // инициализация словаря
 async function getWords(){
+  //!!! используется в помогаторе!!!
   // хз что и почему тут происходит но вроде работает
   const nouns = await fetch('russian_nouns_5.txt');
   const text = await nouns.text();
@@ -72,6 +73,7 @@ function colorField(){
 
 // красим клавиатуру за текущее слово
 function colorKeyboard(){
+  //!!! используется в помогаторе!!!
   keyboardButtons.forEach(el=> {
     if (curWord.includes(el.innerHTML)) {
       el.classList.add('letter_type_current-row')
@@ -169,3 +171,4 @@ function closeInstructions(){
 // пилот ревун камыш (маска?)
 // спорт лиман девка
 // спорт диван шмель -- 15 разных, нет  у к г
+// кулеш

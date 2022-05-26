@@ -3,4 +3,7 @@
   padding-top: 3em;
   /*margin: 0 auto;*/
   text-align: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
 }

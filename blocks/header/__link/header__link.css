@@ -1,0 +1,8 @@
+﻿.header__link {
+  position: absolute;
+  right: 10%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  text-decoration: none;
+}
