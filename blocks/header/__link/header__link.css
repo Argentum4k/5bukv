@@ -5,4 +5,5 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   text-decoration: none;
+  cursor: pointer;
 }
