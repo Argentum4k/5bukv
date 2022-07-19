@@ -1,6 +1,43 @@
 ﻿.field__letter {
+  /* весь контейнер поддерживает перспективу */
+  perspective: 10em;
+/*
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-transform: uppercase;
+  color: var(--misposcolor);
+  background-color: var(--bgcolor);
+  border: solid 2px var(--wrongcolor);
+  border-radius: 20%;*/
+}
+
+/* переверните сторону при проведении мышью */
+.field__letter:hover .flipper, .field__letter.hover .flipper {
+  transform: rotateY(180deg);
+}
+
+.field__letter, .front, .back {
   width: 4em;
   height: 4em;
+}
+
+/* здесь находится скорость перевертывания */
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+
+  position: relative;
+}
+
+/* скройте обратную сторону во время переворота */
+.front, .back {
+  backface-visibility: hidden;
+
+  position: absolute;
+  top: 0;
+  left: 0;
 
   display: flex;
   align-items: center;
@@ -11,4 +48,19 @@
   background-color: var(--bgcolor);
   border: solid 2px var(--wrongcolor);
   border-radius: 20%;
+}
+
+/* лицевая сторона размещена над обратной */
+.front {
+  z-index: 2;
+
+}
+
+/* обратная, изначально скрытая сторона */
+.back {
+  color: var(--bgcolor);
+  background-color: var(--rightcolor);
+  border: none;
+
+  transform: rotateY(180deg);
 }

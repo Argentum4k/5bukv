@@ -34,7 +34,7 @@ function newGame(first = false){
     fld.classList.remove('letter_type_wrong')
     fld.classList.remove('letter_type_misposition')
     fld.classList.remove('letter_type_right')
-    fld.innerHTML=''
+    // fld.innerHTML=''
   })
   keyboardButtons.forEach( btn => {
     btn.classList.remove('letter_type_wrong')
