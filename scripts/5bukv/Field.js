@@ -25,7 +25,9 @@ export default class Field{
   draw(containerSelector = '.field'){
     this._containerSelector = containerSelector;
     this._container = document.querySelector(containerSelector);
-    this._container.append(this._field)
+    // this._container.append(this._field)
+    // this._container.replaceWith(this._field)
+    this._container.replaceChildren(this._field);
   }
 
   _generate(){

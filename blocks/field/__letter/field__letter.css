@@ -18,6 +18,10 @@
   transform: rotateY(180deg);
 }
 
+.flip {
+  transform: rotateY(180deg);
+}
+
 .field__letter, .front, .back {
   width: 4em;
   height: 4em;
