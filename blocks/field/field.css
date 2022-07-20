@@ -1,6 +1,6 @@
 ﻿.field {
   display: flex;
   flex-direction: column;
-  gap: var(--fieldgap);
+  gap: .6em;
   margin: 25px 0 50px ;
 }

@@ -1,16 +1,15 @@
 // хз может нужен только массив??
 // let localStorVars = [
 // ]
-// const vars = [
-//   'gamesPlayed',
-//   'winCount',
-//   'loseCount',
-//   'notFinished',
-//   'avgTries',
-//   'totalTries',
-// ]
-
 function initLocalStorage(){
+  // const vars = [
+  //   'gamesPlayed',
+  //   'winCount',
+  //   'loseCount',
+  //   'notFinished',
+  //   'avgTries',
+  //   'totalTries',
+  // ]
 
   stats.forEach( stat => {
   // vars.forEach(v=>{

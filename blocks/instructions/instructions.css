@@ -1,7 +1,4 @@
 ﻿.instructions {
-  z-index: 1;
-  /*изза перспективы*/
-
   position: absolute;
   display: flex;
   flex-direction: column;
