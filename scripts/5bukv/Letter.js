@@ -46,6 +46,7 @@ export default class Letter {
    * потрясти
    */
   shake() {
+    // flipper не подходит, проявляется другая сторона...
     this._letter.classList.add('shake')
     setTimeout(()=>this._letter.classList.remove('shake'), 200)
   }

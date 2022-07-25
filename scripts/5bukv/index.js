@@ -8,7 +8,8 @@ import {
   keyboardButtons,
   lines,
   secret,
-  triedWords
+  triedWords,
+  instructions
 } from "./init.js";
 import {initStats, V} from "./permanent.js";
 
@@ -178,8 +179,8 @@ export function letterPressed(letterButton) {
   }
 }
 
-function closeInstructions() {
-  document.querySelector('.instructions').style.display = 'none'
+export function closeInstructions() {
+  instructions.classList.add('instructions_hidden')
   console.log('close')
   V('instructionsSeen', '1');
 }

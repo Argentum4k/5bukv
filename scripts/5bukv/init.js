@@ -1,6 +1,7 @@
 import Field from "./Field.js";
 import {initLocalStorage, V} from "./permanent.js";
-import {getWords, letterPressed, newGame} from "./index.js";
+import {getWords, letterPressed, newGame, closeInstructions} from "./index.js";
+import { instructionsSelector } from "./constants.js";
 
 export let allWords=[]
 export let secret
@@ -15,6 +16,7 @@ export const backButton = controlButtons[0]
 export const okButton = controlButtons[1]
 export const lines = document.querySelectorAll('.field__line')
 export const stats = document.querySelectorAll('.stats p')
+export const instructions = document.querySelector(instructionsSelector)
 initLocalStorage()
 getWords().then(()=>{
   // разобраться с асинхронностью
@@ -61,9 +63,16 @@ document.addEventListener('keyup', event => {
 });
 
 // testing
+document.querySelector('.header__help').
+addEventListener('click', ()=>{
+  instructions.classList.toggle('instructions_hidden')
+})
 
+instructions.
+querySelector('button').
+addEventListener('click', closeInstructions)
 if (V('instructionsSeen')==='1')
-  document.querySelector('.instructions').style.display = 'none'
+  instructions.classList.add('instructions_hidden')
 
 const field = new Field(5,6)
 field.draw('.field')

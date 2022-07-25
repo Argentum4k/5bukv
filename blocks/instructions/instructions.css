@@ -27,3 +27,7 @@
 .instructions ul{
   padding-left: 20px;
 }
+
+.instructions_hidden{
+  display: none;
+}
