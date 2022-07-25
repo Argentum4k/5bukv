@@ -1,5 +1,5 @@
 //debug
-debug = document.querySelector('.debug')
+const debug = document.querySelector('.debug')
 const url = new URL(document.location.href)
 if (url.searchParams.get('debug') != null) {
   debug.classList.remove('debug_hidden')

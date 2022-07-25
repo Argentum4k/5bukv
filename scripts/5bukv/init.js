@@ -1,16 +1,20 @@
-let allWords=[]
-let secret
-let curLine = 0
-let curPos = 0
-let curWord = ''
-let triedWords = []
-let complete = false
-const keyboardButtons = document.querySelectorAll('.keyboard__button')
-const controlButtons = [...document.querySelectorAll('.keyboard__button_big')]
-const backButton = controlButtons[0]
-const okButton = controlButtons[1]
-const lines = document.querySelectorAll('.field__line')
-const stats = document.querySelectorAll('.stats p')
+import Field from "./Field.js";
+import {initLocalStorage, V} from "./permanent.js";
+import {getWords, letterPressed, newGame} from "./index.js";
+
+export let allWords=[]
+export let secret
+export let curLine = 0
+export let curPos = 0
+export let curWord = ''
+export let triedWords = []
+export let complete = false
+export const keyboardButtons = document.querySelectorAll('.keyboard__button')
+export const controlButtons = [...document.querySelectorAll('.keyboard__button_big')]
+export const backButton = controlButtons[0]
+export const okButton = controlButtons[1]
+export const lines = document.querySelectorAll('.field__line')
+export const stats = document.querySelectorAll('.stats p')
 initLocalStorage()
 getWords().then(()=>{
   // разобраться с асинхронностью
@@ -30,7 +34,7 @@ const alphabet = 'йцукенгшщзхъфывапролджэячсмитьб
 document.addEventListener('keydown', event => {
   if (alphabet.includes(event.key)){
     keyboardButtons.forEach(el => {
-      if (el.innerHTML == event.key && curPos < 5)
+      if (el.innerHTML === event.key && curPos < 5)
         el.classList.add('letter_type_current-row')
     })
   }
@@ -44,15 +48,22 @@ document.addEventListener('keyup', event => {
   // code = event.code
   if (alphabet.includes(event.key) ){
     keyboardButtons.forEach(el => {
-      if (el.innerHTML == event.key) {
+      if (el.innerHTML === event.key) {
         el.click()
         // el.classList.remove('keyboard__button_big')
       }
     })
-  } else if ('Backspace' == event.key){
+  } else if ('Backspace' === event.key){
     backButton.click()
-  } else if ('Enter' == event.key){
+  } else if ('Enter' === event.key){
     okButton.click()
   }
 });
 
+// testing
+
+if (V('instructionsSeen')==='1')
+  document.querySelector('.instructions').style.display = 'none'
+
+const field = new Field(5,6)
+field.draw('.field')

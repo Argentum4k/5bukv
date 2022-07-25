@@ -1,5 +1,19 @@
+import {
+  allWords,
+  complete,
+  controlButtons,
+  curLine,
+  curPos,
+  curWord,
+  keyboardButtons,
+  lines,
+  secret,
+  triedWords
+} from "./init.js";
+import {initStats, V} from "./permanent.js";
+
 // инициализация словаря
-async function getWords(){
+export async function getWords() {
   //!!! используется в помогаторе!!!
   // хз что и почему тут происходит но вроде работает
   const nouns = await fetch('russian_nouns_5.txt');
@@ -18,8 +32,9 @@ async function getWords(){
     allWords = text.split('\r\n')  // для локальной
 }
 
+
 // начинает все заново
-function newGame(first = false){
+export function newGame(first = false) {
   // secret = allWords[Math.floor(Math.random() * allWords.length)].replace('ё','е')
   highlightCurLine(0)
   curLine = 0
@@ -36,28 +51,29 @@ function newGame(first = false){
     fld.classList.remove('letter_type_right')
     // fld.innerHTML=''
   })
-  keyboardButtons.forEach( btn => {
+  keyboardButtons.forEach(btn => {
     btn.classList.remove('letter_type_wrong')
     btn.classList.remove('letter_type_misposition')
     btn.classList.remove('letter_type_right')
   })
-  secret = allWords[Math.floor(Math.random() * allWords.length)].replace('ё','е')
+  secret = allWords[Math.floor(Math.random() * allWords.length)].replace('ё', 'е')
   console.log('загадано слово "' + secret.toUpperCase() + '"')
-  if(!first)
-    V('gamesPlayed', 1+ +V('gamesPlayed'))
+  if (!first)
+    V('gamesPlayed', 1 + +V('gamesPlayed'))
   initStats()
 }
+
 // красит поле
-function colorField(){
+function colorField() {
   const line = lines[curLine].querySelectorAll('.field__letter')
-  line.forEach((letterField,index) => {
+  line.forEach((letterField, index) => {
     let curLetter = letterField.innerHTML
-    const curButton = [...keyboardButtons].filter(b => b.innerHTML == curLetter)[0]
+    const curButton = [...keyboardButtons].filter(b => b.innerHTML === curLetter)[0]
     if (!secret.includes(curLetter)) {
       letterField.classList.add('letter_type_wrong')
       curButton.classList.add('letter_type_wrong') // оно так и так не меняется
     } else {
-      if (curLetter != secret[index]) {  // есть но не на своем месте
+      if (curLetter !== secret[index]) {  // есть но не на своем месте
         letterField.classList.add('letter_type_misposition')
         // тут надо сохранить желтый если был
         if (!curButton.classList.contains('letter_type_right'))
@@ -72,9 +88,9 @@ function colorField(){
 }
 
 // красим клавиатуру за текущее слово
-function colorKeyboard(){
+function colorKeyboard() {
   //!!! используется в помогаторе!!!
-  keyboardButtons.forEach(el=> {
+  keyboardButtons.forEach(el => {
     if (curWord.includes(el.innerHTML)) {
       el.classList.add('letter_type_current-row')
     } else if (!controlButtons.includes(el)) {
@@ -84,7 +100,7 @@ function colorKeyboard(){
 }
 
 // подсветка текущей строки
-function highlightCurLine(isCur){
+function highlightCurLine(isCur) {
   const line = lines[curLine]
   if (line) {
     if (isCur)
@@ -95,60 +111,59 @@ function highlightCurLine(isCur){
 }
 
 // проверяет слово
-function checkWord(word){
-  if (word == secret){
-    V('totalTries', 1+ +V('totalTries'))
+function checkWord(word) {
+  if (word === secret) {
+    V('totalTries', 1 + +V('totalTries'))
     complete = true;
-    V('winCount', 1+ +V('winCount'))
+    V('winCount', 1 + +V('winCount'))
     colorField()
-    setTimeout(()=>{
+    setTimeout(() => {
       console.log('красим-красим')
       alert('Угадал')
       newGame()
     }, 100) // ok
     // почемуто сначала делается алерт, а красить не красит. Видимо потому что алерт асинхронный?...
   } else {
-    if (!allWords.includes(word)){
+    if (!allWords.includes(word)) {
       alert('Нет такого слова')
     } else {
-      if (triedWords.includes(word)){
+      if (triedWords.includes(word)) {
         alert('Это слово уже было')
         return
       }
-      V('totalTries', 1+ +V('totalTries'))
+      V('totalTries', 1 + +V('totalTries'))
       colorField()
       highlightCurLine(0)
       curLine += 1
       curPos = 0
       triedWords.push(curWord)
       curWord = ''
-      if (curLine > 5){
+      if (curLine > 5) {
         alert('Вы проиграли, было загадано слово "' + secret + '"')
-        V('loseCount', 1+ +V('loseCount'))
+        V('loseCount', 1 + +V('loseCount'))
         newGame()
-      }
-      else
+      } else
         highlightCurLine(1)
     }
   }
 }
 
 // обработчик нажатой буквы
-function letterPressed(letterButton) {
+export function letterPressed(letterButton) {
   // if (curPos > 4) return
   if (complete) return
   let letter = letterButton.target.innerHTML
   let curField
-  if (letter == '←') {
+  if (letter === '←') {
     curPos = curPos - 1 < 0 ? 0 : curPos - 1
     curField = lines[curLine].querySelectorAll('.field__letter')[curPos]
     curField.innerHTML = ''
-    if  (curWord != '')
-      curWord = curWord.slice(0,-1)
+    if (curWord !== '')
+      curWord = curWord.slice(0, -1)
     colorKeyboard()
     return
   }
-  if (letter == '✔') {
+  if (letter === '✔') {
     if (curPos < 5) return;
     checkWord(curWord.toLowerCase())
     colorKeyboard()
@@ -163,9 +178,10 @@ function letterPressed(letterButton) {
   }
 }
 
-function closeInstructions(){
+function closeInstructions() {
   document.querySelector('.instructions').style.display = 'none'
   console.log('close')
+  V('instructionsSeen', '1');
 }
 
 

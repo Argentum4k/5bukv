@@ -1,5 +1,5 @@
-import {fieldLineTemplateSelector, letterTemplateSelector} from "./constants";
-import Letter from "./Letter";
+import {fieldLineTemplateSelector} from "./constants.js";
+import Letter from "./Letter.js";
 
 /**
  * класс игровое поле
@@ -27,7 +27,8 @@ export default class Field{
     this._container = document.querySelector(containerSelector);
     // this._container.append(this._field)
     // this._container.replaceWith(this._field)
-    this._container.replaceChildren(this._field);
+    this._container.replaceChildren(this._field); // в этот момент почемуто очищается _field
+    // но лиснеры на буквах то остались
   }
 
   _generate(){

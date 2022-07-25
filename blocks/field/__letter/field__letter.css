@@ -1,6 +1,8 @@
 ﻿.field__letter {
   /* весь контейнер поддерживает перспективу */
   perspective: 10em;
+  /*может и не надо, посмотреть куда переставить, скорее всего менять леттер_тайп_...*/
+  border-radius: 20%;
 /*
   display: flex;
   align-items: center;
@@ -15,7 +17,7 @@
 
 /* переверните сторону при проведении мышью */
 .field__letter:hover .flipper, .field__letter.hover .flipper {
-  transform: rotateY(180deg);
+  /*transform: rotateY(180deg);*/
 }
 
 .flip {
@@ -68,3 +70,8 @@
 
   transform: rotateY(180deg);
 }
+
+/*.shake {*/
+/*  background-color: green;*/
+/*  border: green;*/
+/*}*/
