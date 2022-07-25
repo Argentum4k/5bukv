@@ -3,7 +3,7 @@ import {initLocalStorage, V} from "./permanent.js";
 import {getWords, letterPressed, newGame, closeInstructions} from "./index.js";
 import { instructionsSelector } from "./constants.js";
 
-export let allWords=[]
+export let allWords
 export let secret
 export let curLine = 0
 export let curPos = 0

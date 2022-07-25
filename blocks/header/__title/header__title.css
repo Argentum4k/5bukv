@@ -1,5 +1,16 @@
 ﻿.header__title {
+  position: absolute;
+  /* margin: auto;
+  left: 0;
+  right: 0;
+  width: 8em;  */
+  /* 8em это конечно подсчитано и если чо может поменяться */
+  /* а вот так вроде по красоте */
+  left: 50%;
+  transform: translateX(-50%);
+  
+  /* width: 100%; */
   display: flex;
   gap: .1em;
-  margin: 0;
+  /* margin: 0; */ 
 }
