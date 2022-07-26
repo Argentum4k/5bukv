@@ -1,7 +1,8 @@
 import Field from "./Field.js";
 import {initLocalStorage, V} from "./permanent.js";
 import {getWords, letterPressed, newGame, closeInstructions} from "./index.js";
-import { instructionsSelector } from "./constants.js";
+import {backButton, instructions, keyboardButtons, okButton} from "./constants.js";
+
 
 export let allWords
 export let secret
@@ -10,13 +11,7 @@ export let curPos = 0
 export let curWord = ''
 export let triedWords = []
 export let complete = false
-export const keyboardButtons = document.querySelectorAll('.keyboard__button')
-export const controlButtons = [...document.querySelectorAll('.keyboard__button_big')]
-export const backButton = controlButtons[0]
-export const okButton = controlButtons[1]
-export const lines = document.querySelectorAll('.field__line')
-export const stats = document.querySelectorAll('.stats p')
-export const instructions = document.querySelector(instructionsSelector)
+
 initLocalStorage()
 getWords().then(()=>{
   // разобраться с асинхронностью

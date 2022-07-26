@@ -1,16 +1,19 @@
 import {
   allWords,
   complete,
-  controlButtons,
   curLine,
   curPos,
   curWord,
-  keyboardButtons,
-  lines,
   secret,
   triedWords,
-  instructions
 } from "./init.js";
+
+import {
+  controlButtons,
+  keyboardButtons,
+  lines,
+  instructions } from "./constants.js";
+
 import {initStats, V} from "./permanent.js";
 
 // инициализация словаря

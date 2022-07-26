@@ -16,10 +16,10 @@
 <body class="page">
   <header class="header">
     <div>
-      <button type="button" class="header__buttons header__help">        
+      <button type="button" class="header__buttons header__help">
         <span class="header__letter">?</span>
       </button>
-      <button type="button" class="header__buttons header__config">        
+      <button type="button" class="header__buttons header__config">
         <span class="header__letter">⚙</span>
       </button>
     </div>
@@ -77,6 +77,20 @@
     </section>
     <section class="config">
       <!-- https://codepen.io/AbubakerSaeed/pen/eYOvKpY -->
+      <div class="box">
+        <a href="#m2-o" class="link-1" id="m2-c">Modal 2</a>
+        <p class="box__info">With Background (Opacity .4)</p>
+
+        <div class="modal-container" id="m2-o" style="--m-background: hsla(0, 0%, 0%, .4);">
+          <div class="modal">
+            <h1 class="modal__title">Modal 2 Title</h1>
+            <p class="modal__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis ex dicta maiores libero minus obcaecati iste optio, eius labore repellendus.</p>
+            <button class="modal__btn">Button &rarr;</button>
+            <button class="modal__btn">Button &rarr;</button>
+            <a href="#m2-c" class="link-2"></a>
+          </div>
+        </div>
+      </div>
       <form class="config-form">
         <input type="range" name="level" id="level">
         <label for="wordLength">Длина слова</label>
@@ -85,7 +99,7 @@
           <option value="5">5</option>
           <option value="6">6</option>
         </select>
-        
+
         <label>сложность</label>
         <label>легко<input type="radio" name="level" value="1"></label>
         <label>средне<input type="radio" name="level" value="2"></label>

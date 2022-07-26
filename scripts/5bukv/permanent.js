@@ -10,7 +10,8 @@
 //   'totalTries',
 // ]
 
-import {stats} from "./init.js";
+
+import {stats} from "./constants.js";
 
 export function initLocalStorage(){
 
