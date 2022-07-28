@@ -1,0 +1,75 @@
+.button-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  position: relative;
+  text-align: center;
+  top: 50%;
+  /*margin-top: -2.5em;*/
+}
+
+.button-label {
+  display: inline-block;
+  text-align: center;
+  width: 6em;
+  height: 3em;
+  /*padding: 1em 2em;*/
+  /*подгон*/
+  padding-top: 0.2em;
+  margin: 0.5em;
+  cursor: pointer;
+  color: #292929;
+  border-radius: 0.25em;
+  background: #efefef;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2), inset 0 -3px 0 rgba(0, 0, 0, 0.22);
+  transition: 0.3s;
+  user-select: none;
+}
+.button-label h1 {
+  font-size: 1em;
+  font-family: "Lato", sans-serif;
+}
+.button-label:hover {
+  background: #d6d6d6;
+  color: #101010;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2), inset 0 -3px 0 rgba(0, 0, 0, 0.32);
+}
+.button-label:active {
+  transform: translateY(2px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2), inset 0px -1px 0 rgba(0, 0, 0, 0.22);
+}
+/*@media (max-width: 40em) {*/
+/*  .button-label {*/
+/*    padding: 0em 1em 3px;*/
+/*    margin: 0.25em;*/
+/*  }*/
+/*}*/
+
+.radio-label:checked + .button-label {
+  background: var(--rightcolor);
+}
+
+#yes-button:checked + .button-label:hover {
+  background: #29b765;
+  color: #e2e2e2;
+}
+
+#no-button:checked + .button-label {
+  background: #D91E18;
+  color: #efefef;
+}
+#no-button:checked + .button-label:hover {
+  background: #c21b15;
+  color: #e2e2e2;
+}
+
+#maybe-button:checked + .button-label {
+  background: #4183D7;
+  color: #efefef;
+}
+#maybe-button:checked + .button-label:hover {
+  background: #2c75d2;
+  color: #e2e2e2;
+}
+

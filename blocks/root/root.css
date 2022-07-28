@@ -3,10 +3,22 @@
   --wrongcolor: #373737;
   --misposcolor: white;
   --rightcolor: yellow;
-  --fieldgap: .6em
+  --fieldgap: .6em;
+  /*popup*/
+  /*--popup-light: hsl(220, 50%, 90%);*/
+  /*--popup-primary: hsl(255, 30%, 55%);*/
+  /*--popup-focus: hsl(210, 90%, 50%);*/
+  /*--popup-border-color: hsla(0, 0%, 100%, .2);*/
+  /*--popup-global-background: hsl(220, 25%, 10%);*/
+  /*--popup-background-gradient: linear-gradient(to right, hsl(210, 30%, 20%), hsl(255, 30%, 25%));*/
+  /*--popup-shadow-1: hsla(236, 50%, 50%, .3);*/
+  /*--popup-shadow-2: hsla(236, 50%, 50%, .4);*/
+  /*--popup-m-background: hsla(0, 0%, 0%, .4);*/
 }
 
-* {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;

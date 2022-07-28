@@ -27,7 +27,7 @@
       <span class="header__letter">5</span><span class="header__letter">Б</span><span class="header__letter">У</span><span
       class="header__letter">К</span><span class="header__letter">В</span>
     </h1>
-      <a class="header__link" href="pomogator.html">
+      <a class="header__link" href="pomogator.html" target="_blank">
         <span class="header__letter">п</span>
         <span class="header__letter">о</span>
         <span class="header__letter">м</span>
@@ -52,69 +52,85 @@
   </div>
   <button id="debug_toggle" class="debug_hidden" onclick="toggleDebug()">дебаг вкл/выкл</button>
   <main class="content">
-    <section class="instructions">
-      <h2>Игра 5 букв, или Быки и коровы.</h2>
-      <br><br>
-      <p>В игре нужно угадать слово из 5 букв, это нарицательное существительное в первом лице и единственном числе.
-        Подсвечиваются буквы, которые есть в слове,
-        но не на своем месте (белым), и буквы, которые на своем месте (желтым)</p>
-      <br>
-      <ol> Как играть:
-        <li>набрать существующее слово из 5 букв - существительное в именительном падеже единственном числе<br>
-        (Можно использовать клавиатуру в русской раскладке и клавиши Backspace и Enter)</li>
-        <li>нажать "✔" справа внизу</li>
-        <li>если слово неверное - игра об этом скажет, исправить (кнопка удалить слева внизу)</li>
-        <li>если слово верное - игра подсветит буквы на поле и на клавиатуре:</li>
-        <ul>
-          <li>серым - те, которых нет в загаданном слове</li>
-          <li>белым - те, которые есть в загаданном слове, но на другой позиции</li>
-          <li>желтым - те, которые есть и на своем месте</li>
-        </ul>
-      </ol>
-      <br><br>
-      <button type="button">Закрыть</button>
-      <br><br>
-    </section>
-    <section class="config">
-      <!-- https://codepen.io/AbubakerSaeed/pen/eYOvKpY -->
-      <div class="box">
-        <a href="#m2-o" class="link-1" id="m2-c">Modal 2</a>
-        <p class="box__info">With Background (Opacity .4)</p>
-
-        <div class="modal-container" id="m2-o" style="--m-background: hsla(0, 0%, 0%, .4);">
-          <div class="modal">
-            <h1 class="modal__title">Modal 2 Title</h1>
-            <p class="modal__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis ex dicta maiores libero minus obcaecati iste optio, eius labore repellendus.</p>
-            <button class="modal__btn">Button &rarr;</button>
-            <button class="modal__btn">Button &rarr;</button>
-            <a href="#m2-c" class="link-2"></a>
-          </div>
+    <section class="popups">
+      <div class="popup instructions-popup">
+        <div class="instructions">
+          <h2>Игра 5 букв, или Быки и коровы.</h2>
+          <br><br>
+          <p>В игре нужно угадать слово из 5 букв, это нарицательное существительное в первом лице и единственном числе.
+            Подсвечиваются буквы, которые есть в слове,
+            но не на своем месте (белым), и буквы, которые на своем месте (желтым)</p>
+          <br>
+          <ol> Как играть:
+            <li>набрать существующее слово из 5 букв - существительное в именительном падеже единственном числе<br>
+              (Можно использовать клавиатуру в русской раскладке и клавиши Backspace и Enter)</li>
+            <li>нажать "✔" справа внизу</li>
+            <li>если слово неверное - игра об этом скажет, исправить (кнопка удалить слева внизу)</li>
+            <li>если слово верное - игра подсветит буквы на поле и на клавиатуре:</li>
+            <ul>
+              <li>серым - те, которых нет в загаданном слове</li>
+              <li>белым - те, которые есть в загаданном слове, но на другой позиции</li>
+              <li>желтым - те, которые есть и на своем месте</li>
+            </ul>
+          </ol>
+          <br><br>
+          <button type="button">Закрыть</button>
+          <br><br>
         </div>
       </div>
-      <form class="config-form">
-        <input type="range" name="level" id="level">
-        <label for="wordLength">Длина слова</label>
-        <select id="wordLength">
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-        </select>
+      <div class="popup config-popup popup_opened">
+        <form class="form" name="config-form" novalidate>
+          <h2 class="popup__header">Настройки игры</h2>
+          <div class="config-main">
+            <div class="button-wrap">
+              <h3 class="radio-name">Длина слова</h3>
+              <input class="hidden radio-label" type="radio" name="word-length" id="len-4" checked="checked"/>
+              <label class="button-label button" for="len-4">
+                <h1>4</h1>
+              </label>
+              <input class="hidden radio-label" type="radio" name="word-length" id="len-5"/>
+              <label class="button-label button" for="len-5">
+                <h1>5</h1>
+              </label>
+              <input class="hidden radio-label" type="radio" name="word-length" id="len-6"/>
+              <label class="button-label button" for="len-6">
+                <h1>6</h1>
+              </label>
+            </div>
+            <div class="demo-field">
+<!--              здесь будет рисоваться полюшко-->
+              <div style="min-width: 200px; min-height: 200px; background-color: green"></div>
+            </div>
+            <div class="button-wrap">
+              <h3 class="radio-name">Сложность</h3>
+              <input class="hidden radio-label" type="radio" name="accept-offers" id="lvl-easy" checked="checked"/>
+              <label class="button-label button" for="lvl-easy">
+                <h1>Легко</h1>
+              </label>
+              <input class="hidden radio-label" type="radio" name="accept-offers" id="lvl-med"/>
+              <label class="button-label button" for="lvl-med">
+                <h1>Средне</h1>
+              </label>
+              <input class="hidden radio-label" type="radio" name="accept-offers" id="lvl-hard"/>
+              <label class="button-label button" for="lvl-hard">
+                <h1>Сложно</h1>
+              </label>
+            </div>
+          </div>
+          <button class="form__button" type="submit">К игре!</button>
+          <button class="popup__close button" type="reset"></button>
+        </form>
+      </div>
+      <div class="popup stats-popup">
+        <p id="gamesPlayed">Игр сыграно: <span></span></p>
+        <p id="winCount">Побед: <span></span></p>
+        <p id="loseCount">Поражений: <span></span></p>
+        <!--      <p id="notFinished">Недоиграно: <span></span></p>-->
+        <p id="avgTries">Среднее число попыток: <span></span></p>
+        <p id="totalTries">Общее число попыток: <span></span></p>
+      </div>
+    </section>
 
-        <label>сложность</label>
-        <label>легко<input type="radio" name="level" value="1"></label>
-        <label>средне<input type="radio" name="level" value="2"></label>
-        <label>сложно<input type="radio" name="level" value="3"></label>
-        <button type="submit">Сохранить и начать новую игру</button>
-      </form>
-    </section>
-    <section class="stats">
-      <p id="gamesPlayed">Игр сыграно: <span></span></p>
-      <p id="winCount">Побед: <span></span></p>
-      <p id="loseCount">Поражений: <span></span></p>
-<!--      <p id="notFinished">Недоиграно: <span></span></p>-->
-      <p id="avgTries">Среднее число попыток: <span></span></p>
-      <p id="totalTries">Общее число попыток: <span></span></p>
-    </section>
     <section class="field">
 <!--      <div class="field__line">-->
 <!--        <div class="field__letter">-->

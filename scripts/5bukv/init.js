@@ -71,3 +71,5 @@ if (V('instructionsSeen')==='1')
 
 const field = new Field(5,6)
 field.draw('.field')
+
+// temp
