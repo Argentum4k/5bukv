@@ -97,6 +97,7 @@ function highlightCurLine(isCur){
 // проверяет слово
 function checkWord(word){
   if (word == secret){
+    V('totalTries', 1+ +V('totalTries'))
     complete = true;
     V('winCount', 1+ +V('winCount'))
     colorField()
@@ -114,6 +115,7 @@ function checkWord(word){
         alert('Это слово уже было')
         return
       }
+      V('totalTries', 1+ +V('totalTries'))
       colorField()
       highlightCurLine(0)
       curLine += 1
