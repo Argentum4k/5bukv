@@ -19,7 +19,9 @@
 @import url(../blocks/debug/_hidden/debug_hidden.css);
 @import url(../blocks/words/__element/words__element.css);
 @import url(../blocks/letter/_type/letter_type_misposition.css);
+@import url(../blocks/letter/_type/letter_type_wrong.css);
 @import url(../blocks/letter/_type/letter_type_right.css);
 @import url(../blocks/letter/_type/letter_type_current-row.css);
+@import url(../blocks/letter/_type/letter_type_selected.css);
 @import url(../blocks/flip/flip.css);
 @import url(../blocks/words/words.css);
