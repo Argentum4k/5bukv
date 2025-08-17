@@ -1,26 +1,16 @@
 // инициализация словаря
-async function getWords(){
-  //!!! используется в помогаторе!!!
-  // хз что и почему тут происходит но вроде работает
-  const nouns = await fetch('russian_nouns_5.txt');
-  const text = await nouns.text();
-  // а так  работает в консоли но не тут...
-  // const nouns = fetch('russian_nouns_5.txt');
-  // setTimeout(() => { console.log("slept"); }, 2500);
-  // nouns.then(response => response.text())
-  //   .then((response) => {
-  //     allWords = response.split('\r\n')
-  //   })
-  //   .catch(err => console.log(err))
-  if (document.location.host.toLowerCase().includes('github'))
-    allWords = text.split('\n') // для гх пагес
-  else
-    allWords = text.split('\r\n')  // для локальной
-}
+// async function getWords(){
+//   //!!! используется в помогаторе!!!
+//   const nouns = await fetch('russian_nouns_5.txt');
+//   const text = await nouns.text();
+//   if (document.location.host.toLowerCase().includes('github'))
+//     allWords = text.split('\n') // для гх пагес
+//   else
+//     allWords = text.split('\r\n')  // для локальной
+// }
 
 // начинает все заново
 function newGame(first = false){
-  // secret = allWords[Math.floor(Math.random() * allWords.length)].replace('ё','е')
   highlightCurLine(0)
   curLine = 0
   highlightCurLine(1)
@@ -149,12 +139,12 @@ function letterPressed(letterButton) {
     return
   }
   if (letter == '✔') {
-    if (curPos < 5) return;
+    if (curPos < wordLength) return;
     checkWord(curWord.toLowerCase())
     colorKeyboard()
     return
   }
-  if (curPos < 5) {
+  if (curPos < wordLength) {
     curField = lines[curLine].querySelectorAll('.field__letter')[curPos]
     curField.innerHTML = letter
     curWord += letter

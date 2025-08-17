@@ -5,11 +5,12 @@ let curPos = 0
 let curWord = ''
 let triedWords = []
 let complete = false
+let wordLength = 5; // Новая переменная для хранения длины слова
 const keyboardButtons = document.querySelectorAll('.keyboard__button')
 const controlButtons = [...document.querySelectorAll('.keyboard__button_big')]
 const backButton = controlButtons[0]
 const okButton = controlButtons[1]
-const lines = document.querySelectorAll('.field__line')
+let lines = document.querySelectorAll('.field__line')
 const stats = document.querySelectorAll('.stats p')
 initLocalStorage()
 getWords().then(()=>{
@@ -56,3 +57,54 @@ document.addEventListener('keyup', event => {
   }
 });
 
+
+function recreateField() {
+  const field = document.querySelector('.field');
+  field.innerHTML = '';
+
+  for (let i = 0; i < 6; i++) {
+    const line = document.createElement('div');
+    line.className = 'field__line';
+    for (let j = 0; j < wordLength; j++) {
+      const letter = document.createElement('div');
+      letter.className = 'field__letter';
+      line.appendChild(letter);
+    }
+    field.appendChild(line);
+  }
+  lines = document.querySelectorAll('.field__line');
+}
+
+async function getWords() {
+  const fileName = `russian_nouns_${wordLength}.txt`;
+  const nouns = await fetch(fileName);
+  const text = await nouns.text();
+
+  // if (document.location.host.toLowerCase().includes('github'))
+    allWords = text.split('\n');
+  // else
+  //   allWords = text.split('\r\n');
+//  try new format only lf
+}
+
+// Обработчик изменения длины слова
+document.getElementById('wordLengthSelector').addEventListener('change', (event) => {
+  const newLength = parseInt(event.target.value);
+
+  if (!complete && curLine > 0) {
+    if (!confirm('Текущая игра будет сброшена. Продолжить?')) {
+      event.target.value = wordLength;
+      return;
+    }
+  }
+
+  wordLength = newLength;
+  recreateField();
+  getWords().then(() => newGame(true));
+});
+
+// Инициализация после загрузки DOM
+document.addEventListener('DOMContentLoaded', () => {
+  recreateField(); // Генерируем начальное поле
+  // Остальной код инициализации...
+});
